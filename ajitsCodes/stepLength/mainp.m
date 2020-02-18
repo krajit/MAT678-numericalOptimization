@@ -1,0 +1,44 @@
+
+clear all 
+clc
+UMin= 0;
+UMax= 1;
+%nx = 8;
+%ny = 8;
+
+U=zeros(10,10);
+dk=admDiffVFor(@laplaceEqn, 1,U);
+H = admHessian(@laplaceEqn, 1, U)
+
+
+
+% alpha_guess=1000;
+% 
+% nx = size(U,2);
+% ny = size(U,1);
+% dx=1/(nx-1);                     
+% dy=1/(ny-1);                    
+% x=0:dx:1;                        
+% y=0:dy:1;  
+% F=@laplaceEqn;
+% % 
+% while 1
+% 
+% B=(admDiffVFor(@laplaceEqn, 1,U));
+%    dk =reshape(B', 50, 50);
+%     [alpha] =  backtr(alpha_guess,U,dk,F);
+%    
+%    Uo = U;
+%    
+%   U = U - alpha*(-dk);
+%   % U=min(1,max(0,U))
+%    U=min(U,UMax);
+%    U=max(U,UMin);
+%    if (sum(sum(abs(U - Uo))) < 1e-6)
+%       break 
+%    end
+% 
+%    surf(x,y,U)
+%    pause(0.01)
+%    %U=max(U,UMin)
+% end
